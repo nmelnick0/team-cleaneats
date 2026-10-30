@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our App</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #0b1220; color: #eef3fa; line-height: 1.6; }
+  main { max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; display: flex; flex-direction: column; gap: 24px; }
+  main > section { min-height: 120px; }
+  .todo { border: 2px dashed #3a4a66; border-radius: 14px; padding: 28px; text-align: center; color: #98a6bc; }
+  .todo b { display: block; font-size: 1.3rem; color: #eef3fa; }
+  .todo p { margin: 6px 0 10px; }
+  .todo code { font-size: .85rem; background: #12203a; padding: 2px 8px; border-radius: 6px; }
+  .err { border: 2px solid #ef7f8f; border-radius: 14px; padding: 20px; color: #ef7f8f; }
+  footer { text-align: center; color: #98a6bc; font-size: .85rem; padding: 24px 16px; }
+</style>
+<!-- Don't edit this file. Each person edits only their own file in sections/. -->
+<script>
+  window.SITE = window.SITE || {};
+  function section(id, render) {
+    window.__SECTIONS = window.__SECTIONS || {};
+    window.__SECTIONS[id] = render;
+  }
+</script>
+<script src="site.js"></script>
+<script src="sections/hero.js"></script>
+<script src="sections/features.js"></script>
+<script src="sections/team.js"></script>
+<script src="sections/signup.js"></script>
+</head>
+<body>
+<main>
+  <section id="hero"></section>
+  <section id="features"></section>
+  <section id="team"></section>
+  <section id="signup"></section>
+</main>
+<footer>Built at CPVC · Cal Poly Vibe Coding</footer>
+<script>
+  document.title = SITE.name || "Our App";
+  document.documentElement.style.setProperty("--brand", SITE.color || "#5fe3cf");
+  ["hero", "features", "team", "signup"].forEach(function (id) {
+    var el = document.getElementById(id);
+    var render = (window.__SECTIONS || {})[id];
+    try {
+      el.innerHTML = render ? render() : '<div class="err">sections/' + id + '.js didn\'t load. Check it for a typo.</div>';
+    } catch (e) {
+      el.innerHTML = '<div class="err">sections/' + id + '.js has an error: ' + e.message + '</div>';
+    }
+  });
+</script>
+</body>
+</html>
