@@ -31,7 +31,6 @@ section("team", () => `
     #team h3 { margin: 0 0 2px; font-size: 1.1rem; }
     #team .team-role { margin: 0 0 10px; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: ${SITE.color}; }
     #team .team-bio { margin: 0; color: #98a6bc; font-size: .9rem; }
-    #team .team-foot { margin: 28px 0 0; text-align: center; color: #98a6bc; font-size: .9rem; }
   </style>
 
   <div class="team-wrap">
@@ -52,6 +51,5 @@ section("team", () => `
       `).join("")}
     </div>
 
-    <p class="team-foot">Built at CPVC · San Luis Obispo, CA</p>
   </div>
 `);
